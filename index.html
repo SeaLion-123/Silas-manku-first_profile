@@ -3,137 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silas Manku - Developer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <title>Silas Manku - Software Engineer</title>
     <style>
-        /* Basic reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
-        /* Body Styling */
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f7f9fc;
-            color: #333;
+            background-color: #032b2b;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
+            color: #00ffdd;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .status-pill {
+            background-color: #053f3f;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            gap: 0.5rem;
         }
 
-        /* Container Styling */
-        .container {
-            max-width: 900px;
-            background-color: #fff;
-            padding: 50px;
-            margin: 20px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        /* Profile Photo Styling */
-        .profile-photo {
-            width: 150px;
-            height: 150px;
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ffdd;
             border-radius: 50%;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 4rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .right-section {
+            flex: 1;
+        }
+
+        .photo-container {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background: #053f3f;
+            box-shadow: 0 8px 32px rgba(0, 255, 221, 0.1);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        /* Header Styling */
-        .header h1 {
-            font-weight: 600;
-            font-size: 2.5em;
-            color: #2c3e50;
-            margin-bottom: 5px;
+        .photo-container:hover img {
+            transform: scale(1.05);
         }
 
-        .header h2 {
-            font-weight: 400;
-            color: #5f6368;
-            font-size: 1.2em;
-            margin-bottom: 20px;
+        .photo-border {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #00ffdd;
+            border-radius: 25px;
+            pointer-events: none;
+            opacity: 0.3;
         }
 
-        /* Intro Section Styling */
-        .intro {
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 30px;
+        .title-tag {
+            color: #00ffdd;
+            margin-bottom: 1rem;
+            font-weight: 500;
         }
 
-        /* Call to Action Button */
-        .cta-button {
-            background-color: #0073e6;
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 5px;
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .description {
+            color: #a0aec0;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-button {
+            background: linear-gradient(to right, #053f3f, #032b2b);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            margin-top: 15px;
             display: inline-block;
+            margin-right: 1rem;
+            border: 1px solid #053f3f;
+            transition: all 0.3s ease;
         }
 
-        .cta-button:hover {
-            background-color: #005bb5;
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* Contact Section */
-        .contact-info {
-            color: #444;
-            margin: 40px 0;
+        .skills-card {
+            background-color: #053f3f;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
         }
 
-        .contact-info p, .contact-info a {
-            color: #444;
-            margin: 5px 0;
-            font-size: 1em;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
-        .contact-info a {
-            color: #0073e6;
-            text-decoration: none;
+        .skill-item {
+            background-color: #032b2b;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            color: #00ffdd;
         }
 
-        /* Footer */
-        footer {
-            font-size: 0.9em;
-            color: #aaa;
-            margin-top: 50px;
+        .side-text {
+            position: fixed;
+            right: -2rem;
+            bottom: 50%;
+            transform: rotate(90deg);
+            font-size: 6rem;
+            color: #053f3f;
+            font-weight: bold;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .side-text {
+                display: none;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .photo-container {
+                width: 200px;
+                height: 200px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="1722422817022.jpeg" alt="Silas Manku's Profile Photo" class="profile-photo">
-        
-        <div class="header">
-            <h1>Silas Manku</h1>
-            <h2>Data Engineer</h2>
-        </div>
+        <nav>
+            <div class="logo">smanku</div>
+            <div class="nav-items">
+                <div>Software Engineering</div>
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    Available for work
+                </div>
+                <div>EN</div>
+            </div>
+        </nav>
 
-        <div class="intro">
-            <p>I can help you and your business get started, grow, and be the best it can be.</p>
-            <p>Want a presence on the web? Looking to engage better with your customers or run a dynamic website? Let’s make it happen together.</p>
-            <a href="#contact" class="cta-button">Let's Work Together</a>
-        </div>
+        <div class="main-content">
+            <div class="left-section">
+                <div class="photo-container">
+                    <img src="1722422817022.jpeg" alt="Silas Manku">
+                    <div class="photo-border"></div>
+                </div>
+                
+                <div class="content">
+                    <div class="title-tag">SOFTWARE ENGINEER</div>
+                    <h1>Full-stack development expertise</h1>
+                    <p class="description">
+                        I am a passionate software developer with a strong interest in technology and
+                        innovation. I thrive on creating efficient and effective solutions that enhance user
+                        experiences and drive progress. Eager to contribute my skills and knowledge in a
+                        collaborative workplace.
+                    </p>
+                    <div>
+                        <a href="mailto:silaskarabomanku@gmail.com" class="contact-button">Contact me</a>
+                        <a href="cell:0603209486" class="contact-button">Call me</a>
+                    </div>
+                </div>
+            </div>
 
-        <div class="contact-info" id="contact">
-            <p>Phone: 060-320-9486</p>
-            <p>Email: <a target="_blank" href="mailto:silaskarabomanku@gmail.com">silaskarabomanku@gmail.com</a></p>
-            <p>Address: 1856 Honey-sucker Street, Section D, Palm Springs</p>
+            <div class="right-section">
+                <div class="skills-card">
+                    <h2>Skills & Expertise</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">Java Programming</div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">SQLite</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">BASH</div>
+                        <div class="skill-item">CSS</div>
+                        <div class="skill-item">HTML</div>
+                        <div class="skill-item">Administrative Skills</div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <footer>
-            &copy; 2024-2025 Silas Manku. All rights reserved.
-        </footer>
     </div>
+
+    <div class="side-text">SOFTWARE ENGINEER</div>
 </body>
 </html>
